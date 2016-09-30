@@ -1,8 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <title>An HTML standard template</title>
+	<meta charset="utf-8">
 </head>
 <body>
-Why?
+<h1>Why?</h1>
 
 “Concurrency.” You want more than one thing to happen at once, easily. Really easily. Laugh out loud easily. Also cheaply.
 
@@ -14,7 +17,7 @@ Why?
      - as opposed to what?
      - functions can be passed around
 
-Why not?
+ <h1>Why not?</h1>
 
 Mandatory periods, semi-colons, colons.
 
@@ -22,13 +25,13 @@ Strange.
 
 Erlang mostly lives in the Linux world.
 
-Getting started.
+<h1>Getting started.</h1>
 
-$$lt; something something erlang
+$&lt; something something erlang
 
 Go install it. You can do it. You believe in you.
 
-I’ve got a REPL. What now?
+<h1>I’ve got a REPL. What now?</h1>
 
 A REPL (“repple”, like “ripple” with an e instead of an i) is a shell.
 Read-Evaluate-Print-Loop
@@ -38,7 +41,7 @@ It evaluates a complete statement, ending in a period. (Yes, like a sentence.)
 It prints out the result. (Everything has a result.)
 It loops back to reading what you’ve typed.
 
-What to type?
+<h1>What to type?</h1>
 
 Statements.
 Here are some to get us started.
@@ -61,16 +64,16 @@ This is an atom. It is a constant with a value of a. What can you do with that? 
 ‘a’.
 This is an atom. It _looks_ like a string. It is not.
 
-<<“binary”>>.
+&lt;&lt;“binary””&gt;&gt;.
 This is a string, in binary. Actual bytes. Actual bits.
 
-[this, “is”, a, <<“list”>>, of, 7, “elements”].
+[this, “is”, a, &lt;&lt;“list”&gt;&gt;, of, 7, “elements”].
 Lists can have different types of stuff.
 
 []
 Lists can be empty.
 
-{“this”, is, ‘a’, <<“tuple”>>, with, 7, elements}.
+{“this”, is, ‘a’, &lt;&lt;“tuple”&gt;&gt; with, 7, elements}.
 Tuples can have different types of stuff.
 
 {}
@@ -82,24 +85,24 @@ Tuple of list of tuple of empty list.
 TheThing = 1.
 TheThing is a “variable.” It will never more vary. Eh?
 
-Making logic.
+<h1>Making logic.</h1>
 
-1 > 0.
+1 &gt; 0.
 true
 
-“I” > you.
+“I” &gt; you.
 true
 
-1.0 > 1.
+1.0 &gt; 1.
 false
 
-What if ...
+<h1>What if ...</h1>
 
-if 1 > 0 -> yes; true -> no.
+if 1 &gt; 0 -&gt; yes; true -&gt; no.
 yes
 
 Wait, what?
-The arrow, “->”, basically means “then”, the semi-colon means “else if”.
+The arrow, “-&gt; basically means “then”, the semi-colon means “else if”.
 This reads as “If one is greater than zero, then do ‘yes’; otherwise if true then do ‘no’."
 Wait, do?
 Everything you do in Erlang has a value. The last thing you do in a sequence of things is the value of that sequence of things.
@@ -107,41 +110,41 @@ Everything you do in Erlang has a value. The last thing you do in a sequence of 
 1, 2, 3, 4, 5.
 5
 
-if 1 > 0 -> 1, 2, 3, 4, 5; 1 = 1 -> no.
+if 1 &gt; 0 -&gt; 1, 2, 3, 4, 5; 1 = 1 -&gt; no.
 
 What happens to 1, 2, 3 and 4? Nothing. You “did” them, which for numbers means doing nothing.
 
-What about the “true -> no.” part?
+What about the “true -&gt; no.” part?
 The “if” statement always has to have a branch that works. The if will always return the result of whatever clause worked.
 
-In the case of ...
+<h1>In the case of ...</h1>
 
-case 1 of 2 -> yes; _ -> no end.
+case 1 of 2 -&gt; yes; _ -&gt; no end.
 
 Yup, a lot like the “if” statement. Same deal, but the case statement is more forgiving. “if” only lets you have a strict set of tests but case lets you use any expression.
 
-Functions.
+<h1>Functions.</h1>
 
-fun() -> 1 end.
+fun() -&gt; 1 end.
 
 Takes no arguments, returns 1. The end.
 
-fun(1) -> 1 end.
+fun(1) -&gt; 1 end.
 Takes one argument, which must be the literal number 1 and returns 1.
 
-fun(X) -> 1 end.
+fun(X) -&gt; 1 end.
 Takes an argument, which we ignore, and returns 1.
 
-fun(X) when X == 1 -> 1 end.
+fun(X) when X == 1 -&gt; 1 end.
 Takes an argument, which we make sure is 1, and returns 1.
 
-fun(X) when X > 0 -> positive;
-     (X) when X < 0 -> negative;
-     (0) -> zero.
+fun(X) when X &gt; 0 -&gt; positive;
+     (X) when X &lt; 0 -&gt; negative;
+     (0) -&gt; zero.
 Three different “clauses” in one function that each “match” a different argument.
 The “when” part is called a “guard”. “if” statements only use guards.
 
-Matchmaker, Matchmaker make me a match!
+<h1>Matchmaker, Matchmaker make me a match!</h1>
 
 A.
 * 1: variable ‘A’ is unbound.
@@ -177,8 +180,8 @@ A matched 1, because A is already 1.
 B was unbound, so B matched 2 and is now bound to 2.
 The result of the match is returned.
 
-{X, [Y, {Z, 4}, “bob”], <<“Frank”>>, 10, []} = {1, [b, {“Wham”, 4}, “bob”], <<“Frank”>>, 10, []}.
-{1, [b, {“Wham”, 4}, “bob”], <<“Frank”>>, 10, []}
+{X, [Y, {Z, 4}, “bob”], &lt;&lt;“Frank”&gt;&gt; 10, []} = {1, [b, {“Wham”, 4}, “bob”], &lt;&lt;“Frank”&gt;&gt; 10, []}.
+{1, [b, {“Wham”, 4}, “bob”], &lt;&lt;“Frank”&gt;&gt;, 10, []}
 Woah.
 Yup, we just picked X, Y and Z out of a lineup of data.
 We “deconstructed” the frankendata to “pull out” some values.
