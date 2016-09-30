@@ -1,0 +1,193 @@
+<html>
+<head>
+</head>
+<body>
+Why?
+
+“Concurrency.” You want more than one thing to happen at once, easily. Really easily. Laugh out loud easily. Also cheaply.
+
+“Supervision.” You know parts of your programs will crash because of random stuff, and you want to restart those parts automatically.
+
+“FP.” Functional programming means you know what all your variables hold and how they got that way. Functional programming also means you can pass instructions around like variables.
+
+     - functions
+     - as opposed to what?
+     - functions can be passed around
+
+Why not?
+
+Mandatory periods, semi-colons, colons.
+
+Strange.
+
+Erlang mostly lives in the Linux world.
+
+Getting started.
+
+$$lt; something something erlang
+
+Go install it. You can do it. You believe in you.
+
+I’ve got a REPL. What now?
+
+A REPL (“repple”, like “ripple” with an e instead of an i) is a shell.
+Read-Evaluate-Print-Loop
+
+It reads what you’ve typed, like any command line.
+It evaluates a complete statement, ending in a period. (Yes, like a sentence.)
+It prints out the result. (Everything has a result.)
+It loops back to reading what you’ve typed.
+
+What to type?
+
+Statements.
+Here are some to get us started.
+
+1.
+This is an integer. A whole number.
+
+1 + 1.
+This is addition.
+
+1.0.
+This is a decimal number.
+
+“I believe in myself.”.
+This is a list of numbers. It is a string. It is both.
+
+a.
+This is an atom. It is a constant with a value of a. What can you do with that? You might be surprised.
+
+‘a’.
+This is an atom. It _looks_ like a string. It is not.
+
+<<“binary”>>.
+This is a string, in binary. Actual bytes. Actual bits.
+
+[this, “is”, a, <<“list”>>, of, 7, “elements”].
+Lists can have different types of stuff.
+
+[]
+Lists can be empty.
+
+{“this”, is, ‘a’, <<“tuple”>>, with, 7, elements}.
+Tuples can have different types of stuff.
+
+{}
+Tuples can be empty.
+
+{[{[]}]}
+Tuple of list of tuple of empty list.
+
+TheThing = 1.
+TheThing is a “variable.” It will never more vary. Eh?
+
+Making logic.
+
+1 > 0.
+true
+
+“I” > you.
+true
+
+1.0 > 1.
+false
+
+What if ...
+
+if 1 > 0 -> yes; true -> no.
+yes
+
+Wait, what?
+The arrow, “->”, basically means “then”, the semi-colon means “else if”.
+This reads as “If one is greater than zero, then do ‘yes’; otherwise if true then do ‘no’."
+Wait, do?
+Everything you do in Erlang has a value. The last thing you do in a sequence of things is the value of that sequence of things.
+
+1, 2, 3, 4, 5.
+5
+
+if 1 > 0 -> 1, 2, 3, 4, 5; 1 = 1 -> no.
+
+What happens to 1, 2, 3 and 4? Nothing. You “did” them, which for numbers means doing nothing.
+
+What about the “true -> no.” part?
+The “if” statement always has to have a branch that works. The if will always return the result of whatever clause worked.
+
+In the case of ...
+
+case 1 of 2 -> yes; _ -> no end.
+
+Yup, a lot like the “if” statement. Same deal, but the case statement is more forgiving. “if” only lets you have a strict set of tests but case lets you use any expression.
+
+Functions.
+
+fun() -> 1 end.
+
+Takes no arguments, returns 1. The end.
+
+fun(1) -> 1 end.
+Takes one argument, which must be the literal number 1 and returns 1.
+
+fun(X) -> 1 end.
+Takes an argument, which we ignore, and returns 1.
+
+fun(X) when X == 1 -> 1 end.
+Takes an argument, which we make sure is 1, and returns 1.
+
+fun(X) when X > 0 -> positive;
+     (X) when X < 0 -> negative;
+     (0) -> zero.
+Three different “clauses” in one function that each “match” a different argument.
+The “when” part is called a “guard”. “if” statements only use guards.
+
+Matchmaker, Matchmaker make me a match!
+
+A.
+* 1: variable ‘A’ is unbound.
+Oh, so we have to “bind” variables.
+
+A = 1.
+Ah, so we assign a value.
+NO! Bad!
+We “match” the two values.
+But A is “unbound”. How does it match 1?
+Unbound variables are promiscuous. They will bind to the first thing they are matched with.
+Okay fine, we assigned 1 to A, but we did it by matching.
+
+A = 2.
+** exception error: no match of right hand side value 2
+What happened?
+A is no longer unbound. A is bound to 1.
+We tried to match A, which is 1, with 2, … which is 2.
+
+A = 1.
+1
+Yup. A is 1. The value of the expression matching A to 1 is also 1.
+
+{A, B} = {1, 2}.
+{1, 2}.
+A
+1.
+B
+2.
+
+We matched a tuple of two values to a tuple of two variables.
+A matched 1, because A is already 1.
+B was unbound, so B matched 2 and is now bound to 2.
+The result of the match is returned.
+
+{X, [Y, {Z, 4}, “bob”], <<“Frank”>>, 10, []} = {1, [b, {“Wham”, 4}, “bob”], <<“Frank”>>, 10, []}.
+{1, [b, {“Wham”, 4}, “bob”], <<“Frank”>>, 10, []}
+Woah.
+Yup, we just picked X, Y and Z out of a lineup of data.
+We “deconstructed” the frankendata to “pull out” some values.
+
+X.
+1
+Y.
+b
+Z.
+“Wham"
+</body>
+</html>
