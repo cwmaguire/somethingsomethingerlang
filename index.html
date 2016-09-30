@@ -3,41 +3,58 @@
 <head>
   <title>Something Something Erlang</title>
 	<meta charset="utf-8">
-
   <style>
-.code {background: black; color: #D0D0D0; padding:5px; font-family:monospace;}
+    .code {background: black; color: #D0D0D0; padding:5px; font-family:monospace;}
   </style>
 </head>
 <body>
-<h1>Why?</h1>
+<h1>Intro</h1>
+<p>
+Just enough Erlang. For people who are curious about Erlang, but just want a quick intro.
+</p>
+<p>
+You're a smart cookie and you'll pay attention and notice things.
+</p>
+<h1>Why Erlang?</h1>
 
+<h4>Concurrency</h4>
 <p>
-“Concurrency.” You want more than one thing to happen at once, easily. Really easily. Laugh out loud easily. Also cheaply.
+You want more than one thing to happen at once, easily. Really easily. Laugh out loud easily. Also cheaply.
+</p>
+<h4>Supervision.</h4>
+<p>
+You know parts of your programs will crash because of random stuff, and you want to restart those parts automatically.
+</p>
+<h4>FP.</h4>
+<p>
+<a href="fp.html">Functional programming</a> means<sup>*</sup> you know what all your variables hold and how they got that way. Functional programming also means you can pass instructions around like variables.
 </p>
 <p>
-“Supervision.” You know parts of your programs will crash because of random stuff, and you want to restart those parts automatically.
-</p>
-<p>
-“FP.” Functional programming means you know what all your variables hold and how they got that way. Functional programming also means you can pass instructions around like variables.
-     - functions
-     - as opposed to what?
-     - functions can be passed around
+<sup>*</sup>Well, it means a lot.
 </p>
 
  <h1>Why not?</h1>
  <p>
-Mandatory periods, semi-colons, colons.
+Mandatory periods, semi-colons, colons. Goofy syntax.
 </p>
 <p>
-Strange.
+It's strange. It started out in Prolog. Prolog is weird (and Awesome!)
+</p>
+<p>
+Stuff is named weird, like "OTP".
 </p>
 <p>
 Erlang mostly lives in the Linux world.
 </p>
+<p>
+The documentation can be a little tricky to navigate.
+</p>
 
 <h1>Getting started.</h1>
 <p class="code">
-$&gt; something something erlang
+1&gt; something, something, erlang.
+<br>
+erlang
 </p>
 <p>
 Go install it. You can do it. You believe in you.
@@ -45,17 +62,19 @@ Go install it. You can do it. You believe in you.
 
 <h1>I’ve got a REPL. What now?</h1>
 <p>
-A REPL (“repple”, like “ripple” with an e instead of an i) is a shell.
+A REPL (“repple”, like “ripple” with an e instead of an i) is a shell. A command-line interface.
+</p>
+<p>
 Read-Evaluate-Print-Loop
 </p>
 <p>
-It READs what you’ve typed, like any command line.
+It <em>READ</em>s what you’ve typed, like any command line.
 <br>
-It EVALuates a complete statement, ending in a period. (Yes, like a sentence.)
+It <em>EVAL</em>uates a complete statement, ending in a period. (Yes, like a sentence.)
 <br>
-It PRINTS out the result. (Everything has a result.)
+It <em>PRINT</em>s out the result. (Everything has a result.)
 <br>
-It LOOPs back to reading what you’ve typed.
+It <em>LOOP</em>s back to reading what you’ve typed.
 </p>
 <p>
 Each expression you evaluate has a number before a greater than sign:
@@ -117,7 +136,7 @@ This is an atom. It is a constant with a value of a. What can you do with that? 
 a
 </p>
 <p>
-This is an atom. It _looks_ like a string. It is not.
+This is an atom. It <em>looks</em> like a string. It is not.
 </p>
 <p class="code">
 7&gt; &lt;&lt;“binary””&gt;&gt;.
@@ -171,7 +190,7 @@ Tuple of list of tuple of empty list.
 1
 </p>
 <p>
-TheThing is a “variable.” It will never more vary. Eh?
+<span class="code">TheThing</span> is a “variable.” It will never more vary. Eh?
 
 <h1>Making logic.</h1>
 
@@ -204,16 +223,13 @@ yes
 Wait, what?
 </p>
 <p>
-The arrow, “-&gt; basically means “then”, the semi-colon means “else if”.
+The arrow, <span class="code">-&gt;</span> basically means “then”, the semi-colon means “else if”.
 </p>
 <p>
-This reads as “If one is greater than zero, then do ‘yes’; otherwise if true then do ‘no’."
+This reads as “If one is greater than zero, then evaluate <span class="code">yes</span>; otherwise if true then evaluate <span class="code">no</span>."
 </p>
 <p>
-Wait, do?
-</p>
-<p>
-Everything you do in Erlang has a value. The last thing you do in a sequence of things is the value of that sequence of things.
+Everything you <em>do</em> (evaluate) in Erlang has a value. The last thing you evaluate in a sequence of things is the value of that sequence of things.
 </p>
 
 <p class="code">
@@ -228,11 +244,14 @@ Everything you do in Erlang has a value. The last thing you do in a sequence of 
 5
 </p>
 
-What happens to 1, 2, 3 and 4? Nothing. You “did” them, which for numbers means doing nothing.
+What happens to <span class="code">1</span>, <span class="code">2</span>, <span class="code">3</span> and <span class="code">4</span>?
+Nothing. You “did” them, which for numbers means doing nothing.
 
 <p>
-What about the “true -&gt; no.” part?
-The “if” statement always has to have a branch that works. The if will always return the result of whatever clause worked.
+What about the <span class="code">true -&gt; no.</span> part?
+</p>
+<p>
+The <span class="code">if</span> statement always has to have a branch that works. The <span class="code">if</span> will always return the result of whatever clause worked.
 </p>
 
 <h1>In the case of ...</h1>
@@ -243,12 +262,27 @@ The “if” statement always has to have a branch that works. The if will alway
 no
 </p>
 
-Yup, a lot like the “if” statement. Same deal, but the case statement is more forgiving. “if” only lets you have a strict set of tests but case lets you use any expression.
+<p>
+Yup, a lot like the <span class="code">if</span> statement. Same deal, but the case statement is more forgiving.
+</p>
+<p>
+<span class="code">if</span> only lets you have a strict set of tests but case lets you use any expression.
 
 <h1>Functions.</h1>
 
 <p class="code">
 21&gt; fun() -&gt; 1 end.
+<br>
+#Fun&lt;erl_eval.6.80484245&gt;
+</p>
+<p>
+By golly, we've captured the evasive <span class="code">#Fun&lt;erl_blah blah&gt;</span> thingy!
+</p>
+<p>
+From now on we'll print <span class="code">#Fun&lt;erl_eval.X.YZ&gt;</span>.
+</p>
+<p>
+This is how erlang prints out a function.
 </p>
 
 <p>
@@ -257,13 +291,17 @@ Takes no arguments, returns 1. The end.
 
 <p class="code">
 22&gt; fun(1) -&gt; 1 end.
+<br>
+#Fun&lt;erl_eval.X.YZ&gt;
 </p>
 <p>
-Takes one argument, which must be the literal number 1 and returns 1.
+Takes one (HA!) argument, which must be the literal number 1 and returns 1.
 </p>
 
 <p class="code">
 23&gt; fun(X) -&gt; 1 end.
+<br>
+#Fun&lt;erl_eval.X.YZ&gt;
 </p>
 <p>
 Takes an argument, which we ignore, and returns 1.
@@ -271,6 +309,8 @@ Takes an argument, which we ignore, and returns 1.
 
 <p class="code">
 24&gt; fun(X) when X == 1 -&gt; 1 end.
+<br>
+#Fun&lt;erl_eval.X.YZ&gt;
 </p>
 <p>
 Takes an argument, which we make sure is 1, and returns 1.
@@ -283,11 +323,7 @@ Takes an argument, which we make sure is 1, and returns 1.
 <br>
 25&gt; &nbsp;&nbsp; (0) -&gt; zero.
 <br>
-#Fun&lt;erl_eval.6.80484245&gt;
-</p>
-<p>
-By golly, we've captured the evasive #Fun&lt;erl_blah blah&gt; thingy!
-This is how erlang prints out a function.
+#Fun&lt;erl_eval.X.YZ&gt;
 </p>
 <p>
 Three different “clauses” in one function that each “match” a different argument.
@@ -316,6 +352,8 @@ Oh, so we have to “bind” variables.
 
 <p class="code">
 27&gt; A = 1.
+<br>
+1
 </p>
 <p>
 Ah, so we assign a value.
@@ -333,7 +371,7 @@ But A is “unbound”. How does it match 1?
 Unbound variables are promiscuous. They will bind to the first thing they are matched with.
 </p>
 <p>
-Okay fine, we assigned 1 to A, but we did it by matching.
+Okay fine, we assigned <span class="code">1</span> to <span class="code">A</span>, but we did it by matching.
 </p>
 
 <p class="code">
@@ -345,10 +383,10 @@ Okay fine, we assigned 1 to A, but we did it by matching.
 What happened?
 </p>
 <p>
-A is no longer unbound. A is bound to 1.
+<span class="code">A</span> is no longer unbound. <span class="code">A</span> is bound to <span class="code">1</span>.
 </p>
 <p>
-We tried to match A, which is 1, with 2, … which is 2.
+We tried to match <span class="code">A</span>, which is <span class="code">1</span>, with <span class="code">2</span>, … which is <span class="code">2</span>.
 </p>
 
 <p class="code">
@@ -375,9 +413,14 @@ The value of the expression matching <span class="code">A</span> to <span class=
 2
 </p>
 
+<p>
 We matched a tuple of two values to a tuple of two variables.
-A matched 1, because A is already 1.
-B was unbound, so B matched 2 and is now bound to 2.
+</p>
+<p>
+<span class="code">A</span> matched <span class="code">1</span>, because <span class="code">A</span> is already <span class="code">1</span>.
+</p>
+<p>
+<span class="code">B</span> was unbound, so <span class="code">B</span> matched <span class="code">2</span> and is now bound to <span class="code">2</span>.
 The result of the match is returned.
 
 <p class="code">
@@ -387,7 +430,7 @@ The result of the match is returned.
 </p>
 <p>
 Woah.
-Yup, we just picked X, Y and Z out of a lineup of data.
+Yup, we just picked <span class="code">X</span>, <span class="code">Y</span> and <span class="code">Z</span> out of a lineup of data.
 </p>
 <p>
 We “deconstructed” the frankendata to “pull out” some values.
