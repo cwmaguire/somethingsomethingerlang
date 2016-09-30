@@ -1,105 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>An HTML standard template</title>
+  <title>Something Something Erlang</title>
 	<meta charset="utf-8">
+
+  <style>
+.code {background: black; color: #D0D0D0; padding:5px; font-family:monospace;}
+  </style>
 </head>
 <body>
 <h1>Why?</h1>
 
+<p>
 “Concurrency.” You want more than one thing to happen at once, easily. Really easily. Laugh out loud easily. Also cheaply.
-
+</p>
+<p>
 “Supervision.” You know parts of your programs will crash because of random stuff, and you want to restart those parts automatically.
-
+</p>
+<p>
 “FP.” Functional programming means you know what all your variables hold and how they got that way. Functional programming also means you can pass instructions around like variables.
-
      - functions
      - as opposed to what?
      - functions can be passed around
+</p>
 
  <h1>Why not?</h1>
-
+ <p>
 Mandatory periods, semi-colons, colons.
-
+</p>
+<p>
 Strange.
-
+</p>
+<p>
 Erlang mostly lives in the Linux world.
+</p>
 
 <h1>Getting started.</h1>
-
-$&lt; something something erlang
-
+<p class="code">
+$&gt; something something erlang
+</p>
+<p>
 Go install it. You can do it. You believe in you.
+</p>
 
 <h1>I’ve got a REPL. What now?</h1>
-
+<p>
 A REPL (“repple”, like “ripple” with an e instead of an i) is a shell.
 Read-Evaluate-Print-Loop
-
-It reads what you’ve typed, like any command line.
-It evaluates a complete statement, ending in a period. (Yes, like a sentence.)
-It prints out the result. (Everything has a result.)
-It loops back to reading what you’ve typed.
+</p>
+<p>
+It READs what you’ve typed, like any command line.
+<br>
+It EVALuates a complete statement, ending in a period. (Yes, like a sentence.)
+<br>
+It PRINTS out the result. (Everything has a result.)
+<br>
+It LOOPs back to reading what you’ve typed.
+</p>
+<p>
+Each expression you evaluate has a number before a greater than sign:
+</p>
+<p class="code">
+512&gt; "My expression is priceless".
+<br>
+"My expression is pricesless"
+</p>
 
 <h1>What to type?</h1>
-
+<p>
 Statements.
 Here are some to get us started.
-
-1.
+</p>
+<p class="code">
+1&gt; 1.
+</p>
+<p>
 This is an integer. A whole number.
-
-1 + 1.
+</p>
+<p class="code">
+2&gt; 1 + 1.
+</p>
+<p>
 This is addition.
-
-1.0.
+</p>
+<p class="code">
+3&gt; 1.0.
+</p>
+<p>
 This is a decimal number.
-
-“I believe in myself.”.
+</p>
+<p class="code">
+4&gt; “I believe in myself.”.
+</p>
+<p>
 This is a list of numbers. It is a string. It is both.
-
-a.
+</p>
+<p class="code">
+5&gt; a.
+</p>
+<p>
 This is an atom. It is a constant with a value of a. What can you do with that? You might be surprised.
-
+</p>
+<p class="code">
 ‘a’.
+</p>
+<p>
 This is an atom. It _looks_ like a string. It is not.
-
+</p>
+<p class="code">
 &lt;&lt;“binary””&gt;&gt;.
+</p>
+<p>
 This is a string, in binary. Actual bytes. Actual bits.
-
+</p>
+<p class="code">
 [this, “is”, a, &lt;&lt;“list”&gt;&gt;, of, 7, “elements”].
+</p>
+<p>
 Lists can have different types of stuff.
-
+</p>
+<p class="code">
 []
+</p>
+<p>
 Lists can be empty.
-
+</p>
+<p class="code">
 {“this”, is, ‘a’, &lt;&lt;“tuple”&gt;&gt; with, 7, elements}.
+</p>
+<p>
 Tuples can have different types of stuff.
-
+</p>
+<p class="code">
 {}
+</p>
+<p>
 Tuples can be empty.
-
+</p>
+<p class="code">
 {[{[]}]}
+</p>
+<p>
 Tuple of list of tuple of empty list.
-
+</p>
+<p class="code">
 TheThing = 1.
+</p>
+<p>
 TheThing is a “variable.” It will never more vary. Eh?
 
 <h1>Making logic.</h1>
 
+<p class="code">
 1 &gt; 0.
+<br>
 true
-
+</p>
+<p>
 “I” &gt; you.
+<br>
 true
+</p>
 
+<p class="code">
 1.0 &gt; 1.
+<br>
 false
+</p>
 
 <h1>What if ...</h1>
 
+<p class="code">
 if 1 &gt; 0 -&gt; yes; true -&gt; no.
+<br>
 yes
+</p>
 
 Wait, what?
 The arrow, “-&gt; basically means “then”, the semi-colon means “else if”.
@@ -107,90 +182,148 @@ This reads as “If one is greater than zero, then do ‘yes’; otherwise if tr
 Wait, do?
 Everything you do in Erlang has a value. The last thing you do in a sequence of things is the value of that sequence of things.
 
+<p class="code">
 1, 2, 3, 4, 5.
+<br>
 5
+</p>
 
+<p class="code">
 if 1 &gt; 0 -&gt; 1, 2, 3, 4, 5; 1 = 1 -&gt; no.
+</p>
 
 What happens to 1, 2, 3 and 4? Nothing. You “did” them, which for numbers means doing nothing.
 
+<p>
 What about the “true -&gt; no.” part?
 The “if” statement always has to have a branch that works. The if will always return the result of whatever clause worked.
+</p>
 
 <h1>In the case of ...</h1>
 
+<p class="code">
 case 1 of 2 -&gt; yes; _ -&gt; no end.
+</p>
 
 Yup, a lot like the “if” statement. Same deal, but the case statement is more forgiving. “if” only lets you have a strict set of tests but case lets you use any expression.
 
 <h1>Functions.</h1>
 
+<p class="code">
 fun() -&gt; 1 end.
+</p>
 
+<p>
 Takes no arguments, returns 1. The end.
+</p>
 
+<p class="code">
 fun(1) -&gt; 1 end.
+</p>
+<p>
 Takes one argument, which must be the literal number 1 and returns 1.
+</p>
 
+<p class="code">
 fun(X) -&gt; 1 end.
+</p>
+<p>
 Takes an argument, which we ignore, and returns 1.
+</p>
 
+<p class="code">
 fun(X) when X == 1 -&gt; 1 end.
+</p>
+<p>
 Takes an argument, which we make sure is 1, and returns 1.
+</p>
 
+<p class="code">
 fun(X) when X &gt; 0 -&gt; positive;
      (X) when X &lt; 0 -&gt; negative;
      (0) -&gt; zero.
+</p>
+<p>
 Three different “clauses” in one function that each “match” a different argument.
 The “when” part is called a “guard”. “if” statements only use guards.
+</p>
 
 <h1>Matchmaker, Matchmaker make me a match!</h1>
 
+<p class="code">
 A.
 * 1: variable ‘A’ is unbound.
+</p>
+<p>
 Oh, so we have to “bind” variables.
+</p>
 
+<p class="code">
 A = 1.
+</p>
+<p>
 Ah, so we assign a value.
 NO! Bad!
 We “match” the two values.
 But A is “unbound”. How does it match 1?
 Unbound variables are promiscuous. They will bind to the first thing they are matched with.
 Okay fine, we assigned 1 to A, but we did it by matching.
+</p>
 
+<p class="code">
 A = 2.
+</p>
+<p>
 ** exception error: no match of right hand side value 2
 What happened?
 A is no longer unbound. A is bound to 1.
 We tried to match A, which is 1, with 2, … which is 2.
+</p>
 
+<p class="code">
 A = 1.
+</p>
+<p>
 1
 Yup. A is 1. The value of the expression matching A to 1 is also 1.
+</p>
 
+<p class="code">
 {A, B} = {1, 2}.
 {1, 2}.
-A
-1.
-B
-2.
+A.
+1
+B.
+2
+</p>
 
 We matched a tuple of two values to a tuple of two variables.
 A matched 1, because A is already 1.
 B was unbound, so B matched 2 and is now bound to 2.
 The result of the match is returned.
 
+<p class="code">
 {X, [Y, {Z, 4}, “bob”], &lt;&lt;“Frank”&gt;&gt; 10, []} = {1, [b, {“Wham”, 4}, “bob”], &lt;&lt;“Frank”&gt;&gt; 10, []}.
 {1, [b, {“Wham”, 4}, “bob”], &lt;&lt;“Frank”&gt;&gt;, 10, []}
+</p>
+<p>
 Woah.
 Yup, we just picked X, Y and Z out of a lineup of data.
 We “deconstructed” the frankendata to “pull out” some values.
+</p>
 
+<p class="code">
 X.
+<br>
 1
+<br>
 Y.
+<br>
 b
+<br>
 Z.
+<br>
 “Wham"
+</p>
 </body>
 </html>
