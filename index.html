@@ -27,7 +27,10 @@ You know parts of your programs will crash because of random stuff, and you want
 </p>
 <h4>FP.</h4>
 <p>
-<a href="fp.html">Functional programming</a> means<sup>*</sup> you know what all your variables hold and how they got that way. Functional programming also means you can pass instructions around like variables.
+<a href="fp.html">Functional programming</a> means<sup>*</sup> you know what all your variables hold and how they got that way.
+</p>
+<p>
+Functional programming also means you can pass instructions around as if they were variables.
 </p>
 <p>
 <sup>*</sup>Well, it means a lot.
@@ -448,6 +451,43 @@ b
 36&gt; Z.
 <br>
 “Wham"
+</p>
+<h1>Files</h1>
+<p>
+Enough of this shell crap. I need a file I can send to Grandma.
+</p>
+<p>
+Right, here's a sample "module" in a file named my_module.erl.
+</p>
+<p class="code">
+-module(my_module).
+<br><br>
+-export([a/0]).
+<br><br>
+a() -&gt;
+<br>
+&nbsp;&nbsp;"Now we're talkin'!".
+</p>
+<p>
+In your OS shell (e.g. bash) type <span class="code">erlc "my_module.erl"</span>
+</p>
+<p>
+You should get <span class="code">my_module.beam</span>.
+</p>
+<p>
+Now type <span class="code">erl</span> in the OS shell.
+</p>
+<p>
+Now in the Erlang shell ...
+</p>
+<p class="code">
+1&gt; l(my_module).
+<br>
+{module,my_module}
+<br>
+2&gt; my_module:a().
+<br>
+"Now we're talkin'!"
 </p>
 </body>
 </html>
