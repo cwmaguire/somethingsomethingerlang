@@ -81,11 +81,13 @@ and save the file as &lt;module-name&gt;.erl.
 --><span class="line">3</span><!--
 --><span class="dash">-</span><!--
 --><span class="export">export</span><!--
+--><span class="paren">(</span><!--
 --><span class="bracket">[</span><!--
 --><span class="function">hello_world</span><!--
 --><span class="slash">/</span><!--
 --><span class="arity">0</span><!--
 --><span class="bracket">]</span><!--
+--><span class="paren">)</span><!--
 --><span class="period">.</span><!--
 --><span class="blankline">newline</span><!--
 --><span class="line">5</span><!--
@@ -93,7 +95,7 @@ and save the file as &lt;module-name&gt;.erl.
 --><span class="function">hello_world</span><!--
 --><span class="paren">(</span><!--
 --><span class="paren">)</span><!--
---><span class="clause-arrow">-></span><!--
+--><span class="clause-arrow">-&gt;</span><!--
 --><span class="newline">newline</span><!--
 --><span class="line">6</span><!--
 --><span class="line">6</span><!--
@@ -172,16 +174,32 @@ Namely, with the "escript" command.
 
 
 <h1>Back to the Beginning.</h1>
-<p class="code">
-1&gt; something, something, erlang.
-<br>
-erlang
-</p>
+
 <p>
-Go install it. You can do it. You believe in you.
+Much of Erlang can be learned by tooling around in the Erlang shell.
+To access the shell type "erl" in the OS shell.
+The Erlang shell is called a "REPL", which is explained below.
+Type the following code at the "1&gt;" prompt and hit enter.
 </p>
 
-<h1>I’ve got a REPL. What now?</h1>
+<p class="code">
+<span class="prompt">1&gt;</span><!--
+--><span class="atom">something</span><!--
+--><span class="comma">,</span><!--
+--><span class="atom">something</span><!--
+--><span class="comma">,</span><!--
+--><span class="atom">erlang</span><!--
+--><span class="comma">.</span><!--
+--><span class="newline">newline</span><!--
+--><span class="atom">erlang</span>
+</p>
+
+<p>
+Congratulations. You've now run Erlang in a file and in the REPL.
+</p>
+
+
+<h1>What is a REPL?</h1>
 <p>
 A REPL (“repple”, like “ripple” with an e instead of an i) is a shell. A command-line interface.
 </p>
@@ -197,23 +215,266 @@ It <em>PRINT</em>s out the result. (Everything has a result.)
 <br>
 It <em>LOOP</em>s back to reading what you’ve typed.
 </p>
+
 <p>
-Each expression you evaluate has a number before a greater than sign:
+Each expression (explained soon) you evaluate has a number before a greater than sign:
 </p>
 <p class="code">
-512&gt; "My expression is priceless".
-<br>
-"My expression is pricesless"
+<span class="prompt">2&gt;</span><!--
+--><span class="double-quote">"</span><!--
+--><span class="string">My expression is priceless</span><!--
+--><span class="double-quote">"</span><!--
+--><span class="period">.</span><!--
+--><span class="comment">%% "My expression is priceless is a string</span><!--
+--><span class="newline">newline</span><!--
+-->"My expression is priceless"
 </p>
 
-<h1>What to type?</h1>
+<h1>Some Basics</h1>
+
+<h2>Literals</h2>
+
 <p>
-Statements.
-Here are some to get us started.
+Erlang does not have objects so all values are literals:
+</p>
+
+<p class="code"><!--
+  --><span class="prompt">2&gt;</span><!--
+  --><span class="integer">1</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->1
+</p>
+Integer.
+<p class="code"><!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">3&gt;</span><!--
+  --><span class="float">2.3</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->2.3
+</p>
+float.
+<p class="code"><!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">4&gt;</span><!--
+  --><span class="double-quote">&quot;</span><!--
+  --><span class="string">abc</span><!--
+  --><span class="double-quote">&quot;</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->"abc"
+</p>
+string.
+<p class="code"><!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">5&gt;</span><!--
+  --><span class="atom">an_atom</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->an_atom
+</p>
+An atom, like a constant that evaluates to itself.
+<p class="code"><!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">6&gt;</span><!--
+  --><span class="bracket">[</span><!--
+  --><span class="integer">4</span><!--
+  --><span class="comma">,</span><!--
+  --><span class="float">5.0</span><!--
+  --><span class="comma">,</span><!--
+  --><span class="double-quote">&quot;</span><!--
+  --><span class="string">def</span><!--
+  --><span class="double-quote">&quot;</span><!--
+  --><span class="bracket">]</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->[4, 5.0, "def"]
+</p>
+Heterogenous list.
+<p class="code"><!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">7&gt;</span><!--
+  --><span class="brace">{</span><!--
+  --><span class="integer">6000000</span><!--
+  --><span class="comma">,</span><!--
+  --><span class="bracket">[</span><!--
+  --><span class="atom">another_atom</span><!--
+  --><span class="bracket">]</span><!--
+  --><span class="comma">,</span><!--
+  --><span class="brace">{</span><!--
+  --><span class="brace">}</span><!--
+  --><span class="comma">,</span><!--
+  --><span class="double-quote">&quot;</span><!--
+  --><span class="string">ghi</span><!--
+  --><span class="double-quote">&quot;</span><!--
+  --><span class="brace">}</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->{60000000000000, [another_atom], {}, "ghi"}
+</p>
+Heterogenous 4-element tuple with a large int, single-element list of an atom,
+an empty tuple and a list.
+
+
+<h2>"Variable" "Assignment" (pattern matching)</h2>
+
+<p class="code"><!--
+  --><span class="prompt">8&gt;</span><!--
+  --><span class="variable">A</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->* 1: variable 'A' is unbound
+</p>
+
+A hasn't been "assigned" to yet.
+
+<p class="code"><!--
+  --><span class="prompt">9&gt;</span><!--
+  --><span class="variable">A</span><!--
+  --><span class="equals">=</span><!--
+  --><span class="integer">1</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->1<!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">9&gt;</span><!--
+  --><span class="variable">A</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->1
+</p>
+
+<p>
+A has been matched to 1. It is now "assigned".
+In order to match A, which is undefined, with 1, it assigned
+1 to A.
+</p>
+
+<p class="code"><!--
+  --><span class="prompt">10&gt;</span><!--
+  --><span class="variable">A</span><!--
+  --><span class="equals">=</span><!--
+  --><span class="integer">2</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->** exception error: no match of right hand side value 2
+</p>
+
+<p>
+A has already been assigned 1, so it cannot match 2.
+</p>
+
+<p class="code"><!--
+  --><span class="prompt">11&gt;</span><!--
+  --><span class="variable">A</span><!--
+  --><span class="equals">=</span><!--
+  --><span class="integer">1</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->1
+</p>
+
+<p>
+A is 1, so it matches 1. A match returns the match.
+</p>
+
+<p class="code"><!--
+  --><span class="prompt">11&gt;</span><!--
+  --><span class="bracket">[</span><!--
+  --><span class="brace">{</span><!--
+  --><span class="atom">_</span><!--
+  --><span class="comma">,</span><!--
+  --><span class="variable">B</span><!--
+  --><span class="brace">}</span><!--
+  --><span class="bracket">]</span><!--
+  --><span class="equals">=</span><!--
+  --><span class="bracket">[</span><!--
+  --><span class="brace">{</span><!--
+  --><span class="integer">1</span><!--
+  --><span class="comma">,</span><!--
+  --><span class="integer">2</span><!--
+  --><span class="brace">}</span><!--
+  --><span class="bracket">]</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->[{1, 2}]
+</p>
+
+<p>
+1 is matched to _ (wildcard), 2 is matched to B.
+The entire match is returned.
+</p>
+
+<p class="code"><!--
+  --><span class="prompt">12&gt;</span><!--
+  --><span class="variable">B</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->2
+</p>
+
+<p>
+A has already been assigned 1, so it cannot match 2.
+</p>
+
+
+
+<h2>Literals</h2>
+
+<p>
+Integers, floats, strings, lists, tuples and atoms are all literals:
+they evaluate to themselves.
+Atoms are a little unusual and are a code token that are used in pattern matching.
+</p>
+
+<h2>Pattern Matching</h2>
+
+<p>
+Erlang can deconstruct and match on values.
+</p>
+
+
+<p>
+Erlang has types like integers, floats, strings.
+Erlang also has structural types: lists and tuples.
+Lists and tuples are ordered collections of elements.
+Lists are made up of other lists, starting form an empty list.
+Tuples are more strictly defined as themselves.
+e.g. [1,2,3], a list, is actually, [1 | [2 | [3 | []]]]. That is,
+a list a element 1 concatenated onto a list of element 2 concatenated onto
+a list of element 3 contatonated onto an empty list.
+The tuple {1,2,3} is itself.
+</p>
+
+
+
+<p>
+You can recall the value of the expression at a number with:
+</p>
+
+<p class="code">
+
+<span class="prompt">3&gt;</span><!--
+--><span class="function">v</span><!--
+--><span class="paren">(</span><!--
+--><span class="integer">2</span><!--
+--><span class="paren">)</span><!--
+--><span class="period">.</span><!--
+--><span class="newline">newline</span><!--
+-->"My expression is priceless"
+</p>
+
+<h1>What to <i>Type</i></h1>
+<p>
+Here are some types:
 </p>
 <p class="code">
-1&gt; 1.
-<br>
+<span class="prompt">1&gt;</span><!--
+--><span class="integer">1</span><!--
+--><span class="comment">1</span><!--
+--><span class="period">.</span><!--
+--><span class="newline">newline</span>
 1
 </p>
 <p>

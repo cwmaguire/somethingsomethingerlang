@@ -1,7 +1,7 @@
 .code {background: black;
        /*color: #D0D0D0;*/
        padding:5px;
-       color:white;
+       color:#D0D0D0;
        font-family:monospace;}
 
 .newline {display:block;
@@ -10,6 +10,10 @@
 
 .blankline {display:block;
             color:black;}
+
+.prompt {font-weight: bold;
+         margin-right:5px;
+         color:#606060;}
 
 .indent {color:black;}
 
@@ -21,6 +25,12 @@
                   /*content: "add newline before comment";*/
                   /*display: block;*/
                   /*height: 0px;}*/
+
+.atom {color:brown;}
+
+.integer {color:#C020C0;}
+
+.float {color:#A050B0;}
 
 .dash {color:orange;}
 
@@ -34,6 +44,10 @@
 
 .paren {}
 
+.bracket {color:yellow;}
+
+.brace {color:#00A0A0;}
+
 .module {color:orange;}
 
 .export {color:orange;}
@@ -44,7 +58,17 @@
 
 .period {}
 
+.comma {margin-right:5px;}
+
 .string {color:red;}
+
+.variable {color:blue;
+           font-weight:bold;}
+
+.equals {color:yellow;
+         margin-left:5px;
+         margin-right:5px;}
+
 .double-quote {color:red;}
 
 .clause-arrow {margin-left:5px;}
