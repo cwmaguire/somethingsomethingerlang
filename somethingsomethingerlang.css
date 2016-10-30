@@ -1,0 +1,53 @@
+.code {background: black;
+       /*color: #D0D0D0;*/
+       padding:5px;
+       color:white;
+       font-family:monospace;}
+
+.newline {display:block;
+          color:black;
+          height:0px;}
+
+.blankline {display:block;
+            color:black;}
+
+.indent {color:black;}
+
+.line {display:none;}
+
+.comment {color:grey;}
+
+/*.comment::before {color: black;*/
+                  /*content: "add newline before comment";*/
+                  /*display: block;*/
+                  /*height: 0px;}*/
+
+.dash {color:orange;}
+
+/*.dash::before {color: black;*/
+               /*content: "add newline before comment";*/
+               /*display: block;}*/
+
+.file {color:darkgrey;}
+
+.file-literal {color:lightgreen;}
+
+.paren {}
+
+.module {color:orange;}
+
+.export {color:orange;}
+
+.function {color:lightblue;}
+
+.module-literal {color:lightgreen;}
+
+.period {}
+
+.string {color:red;}
+.double-quote {color:red;}
+
+.clause-arrow {margin-left:5px;}
+
+.eof {color:grey;}
+

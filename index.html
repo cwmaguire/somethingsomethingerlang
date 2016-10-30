@@ -2,18 +2,13 @@
 <html lang="en">
 <head>
   <title>Something Something Erlang</title>
-	<meta charset="utf-8">
-  <style>
-    .code {background: black; color: #D0D0D0; padding:5px; font-family:monospace;}
-  </style>
+  <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="somethingsomethingerlang.css">
 </head>
 <body>
 <h1>Intro</h1>
 <p>
 Just enough Erlang. For people who are curious about Erlang, but just want a quick intro.
-</p>
-<p>
-You're a smart cookie and you'll pay attention and notice things.
 </p>
 <h1>Why Erlang?</h1>
 
@@ -27,13 +22,7 @@ You know parts of your programs will crash because of random stuff, and you want
 </p>
 <h4>FP.</h4>
 <p>
-<a href="fp.html">Functional programming</a> means<sup>*</sup> you know what all your variables hold and how they got that way.
-</p>
-<p>
-Functional programming also means you can pass instructions around as if they were variables.
-</p>
-<p>
-<sup>*</sup>Well, it means a lot.
+FP good.
 </p>
 
  <h1>Why not?</h1>
@@ -53,7 +42,136 @@ Erlang mostly lives in the Linux world.
 The documentation can be a little tricky to navigate.
 </p>
 
-<h1>Getting started.</h1>
+<h1>Execute Some Erlang</h1>
+
+<p>
+Often people want to start Erlang in the traditional way of writing a file, compiling it and running it.
+Most of this tutorial can be followed in the Erlang shell ("REPL")
+but let's get this part out of the way first.
+</p>
+
+<p>
+First, install erlang: "sudo apt-get install erlang", "yum install erlang", "brew install erlang" or similar.
+</p>
+
+<p>
+Open a file, create a module directive, an export directive, a function,
+and save the file as &lt;module-name&gt;.erl.
+</p>
+<p class="code">
+<span class="line">1</span><!--
+--><span class="comment">%</span><!--
+--><span class="comment">-</span><!--
+--><span class="comment">file</span><!--
+--><span class="comment">(</span><!--
+--><span class="comment">hello_world.erl</span><!--
+--><span class="comment">)</span><!--
+--><span class="comment">.</span><!--
+--><span class="blankline">newline</span><!--
+--><span class="line">1</span><!--
+--><span class="dash">-</span><!--
+--><span class="module">module</span><!--
+--><span class="paren">(</span><!--
+--><span class="module-literal">hello_world</span><!--
+--><span class="paren">)</span><!--
+--><span class="period">.</span><!--
+--><span class="line">2</span><!--
+--><span class="blankline">newline</span><!--
+
+--><span class="line">3</span><!--
+--><span class="dash">-</span><!--
+--><span class="export">export</span><!--
+--><span class="bracket">[</span><!--
+--><span class="function">hello_world</span><!--
+--><span class="slash">/</span><!--
+--><span class="arity">0</span><!--
+--><span class="bracket">]</span><!--
+--><span class="period">.</span><!--
+--><span class="blankline">newline</span><!--
+--><span class="line">5</span><!--
+--><span class="line">5</span><!--
+--><span class="function">hello_world</span><!--
+--><span class="paren">(</span><!--
+--><span class="paren">)</span><!--
+--><span class="clause-arrow">-></span><!--
+--><span class="newline">newline</span><!--
+--><span class="line">6</span><!--
+--><span class="line">6</span><!--
+--><span class="indent">____</span><!--
+--><span class="module-literal">io</span><!--
+--><span class="colon">:</span><!--
+--><span class="function">format</span><!--
+--><span class="paren">(</span><!--
+--><span class="line">6</span><!--
+--><span class="double-quote">&quot;</span><!--
+--><span class="string">hello world!</span><!--
+--><span class="double-quote">&quot;</span><!--
+--><span class="paren">)</span><!--
+--><span class="period">.</span><!--
+--><span class="newline">newline</span><!--
+--><span class="line">7</span><!--
+--><span class="blankline">newline</span>
+</p>
+
+<p>
+Now in the shell run:
+</p>
+
+<p class="code">
+erlc hello_world.erl
+<span class="newline">newline</span>
+erl -noshell -s hello_world hello_world  -s erlang halt
+</p>
+
+<p>
+Voila! You've run an Erlang module from the command line.
+This uses the erlang emulator--which normally we'd use to start a shell--to
+instead run some Erlang code with the -s flag.
+The -s flag can take a module and a function and run them.
+First we run the hello_world:hello_world() function,
+then the erlang:halt() function.
+Clunky, no?
+</p>
+
+<p>
+A more elegant way is to create an "escript": create a file called "hello_world"
+and put in the following:
+</p>
+
+<p class="code"><!--
+--><span class="comment">#!/usr/bin/env escript</span><!--
+--><span class="blankline">blankline</span><!--
+--><span class="function">main</span><!--
+--><span class="paren">(</span><!--
+--><span class="bracket">[</span><!--
+--><span class="bracket">]</span><!--
+--><span class="paren">)</span><!--
+--><span class="clause-arrow">-></span><!--
+--><span class="newline">newline</span><!--
+--><span class="indent">____</span><!--
+--><span class="module-literal">io</span><!--
+--><span class="colon">:</span><!--
+--><span class="function">format</span><!--
+--><span class="paren">(</span><!--
+--><span class="line">6</span><!--
+--><span class="double-quote">&quot;</span><!--
+--><span class="string">Hello world!</span><!--
+--><span class="double-quote">&quot;</span><!--
+--><span class="paren">)</span><!--
+--><span class="period">.</span><!--
+--><span class="blankline">blankline</span>
+</p>
+
+<p>
+Make this an executable and run it.
+You should see "Hello world!" as before.
+This file is called an "escript".
+The "shebang" at the front tells the shell how to run this file.
+Namely, with the "escript" command.
+</p>
+
+
+<h1>Back to the Beginning.</h1>
 <p class="code">
 1&gt; something, something, erlang.
 <br>
