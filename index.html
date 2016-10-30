@@ -195,11 +195,12 @@ Type the following code at the "1&gt;" prompt and hit enter.
 </p>
 
 <p>
-Congratulations. You've now run Erlang in a file and in the REPL.
+Sequences of expressions are separated by commas and end with a period.
+The value of the last expression ('erlang') is returned.
 </p>
 
 
-<h1>What is a REPL?</h1>
+<h1>REPL</h1>
 <p>
 A REPL (“repple”, like “ripple” with an e instead of an i) is a shell. A command-line interface.
 </p>
@@ -225,7 +226,7 @@ Each expression (explained soon) you evaluate has a number before a greater than
 --><span class="string">My expression is priceless</span><!--
 --><span class="double-quote">"</span><!--
 --><span class="period">.</span><!--
---><span class="comment">%% "My expression is priceless is a string</span><!--
+--><span class="comment">%% "My expression is priceless" is a string</span><!--
 --><span class="newline">newline</span><!--
 -->"My expression is priceless"
 </p>
@@ -239,7 +240,7 @@ Erlang does not have objects so all values are literals:
 </p>
 
 <p class="code"><!--
-  --><span class="prompt">2&gt;</span><!--
+  --><span class="prompt">3&gt;</span><!--
   --><span class="integer">1</span><!--
   --><span class="period">.</span><!--
   --><span class="newline">newline</span><!--
@@ -248,7 +249,7 @@ Erlang does not have objects so all values are literals:
 Integer.
 <p class="code"><!--
   --><span class="newline">newline</span><!--
-  --><span class="prompt">3&gt;</span><!--
+  --><span class="prompt">4&gt;</span><!--
   --><span class="float">2.3</span><!--
   --><span class="period">.</span><!--
   --><span class="newline">newline</span><!--
@@ -257,7 +258,7 @@ Integer.
 float.
 <p class="code"><!--
   --><span class="newline">newline</span><!--
-  --><span class="prompt">4&gt;</span><!--
+  --><span class="prompt">5&gt;</span><!--
   --><span class="double-quote">&quot;</span><!--
   --><span class="string">abc</span><!--
   --><span class="double-quote">&quot;</span><!--
@@ -268,7 +269,7 @@ float.
 string.
 <p class="code"><!--
   --><span class="newline">newline</span><!--
-  --><span class="prompt">5&gt;</span><!--
+  --><span class="prompt">6&gt;</span><!--
   --><span class="atom">an_atom</span><!--
   --><span class="period">.</span><!--
   --><span class="newline">newline</span><!--
@@ -277,7 +278,7 @@ string.
 An atom, like a constant that evaluates to itself.
 <p class="code"><!--
   --><span class="newline">newline</span><!--
-  --><span class="prompt">6&gt;</span><!--
+  --><span class="prompt">7&gt;</span><!--
   --><span class="bracket">[</span><!--
   --><span class="integer">4</span><!--
   --><span class="comma">,</span><!--
@@ -294,7 +295,7 @@ An atom, like a constant that evaluates to itself.
 Heterogenous list.
 <p class="code"><!--
   --><span class="newline">newline</span><!--
-  --><span class="prompt">7&gt;</span><!--
+  --><span class="prompt">8&gt;</span><!--
   --><span class="brace">{</span><!--
   --><span class="integer">6000000</span><!--
   --><span class="comma">,</span><!--
@@ -320,7 +321,7 @@ an empty tuple and a list.
 <h2>"Variable" "Assignment" (pattern matching)</h2>
 
 <p class="code"><!--
-  --><span class="prompt">8&gt;</span><!--
+  --><span class="prompt">9&gt;</span><!--
   --><span class="variable">A</span><!--
   --><span class="period">.</span><!--
   --><span class="newline">newline</span><!--
@@ -330,7 +331,7 @@ an empty tuple and a list.
 A hasn't been "assigned" to yet.
 
 <p class="code"><!--
-  --><span class="prompt">9&gt;</span><!--
+  --><span class="prompt">10&gt;</span><!--
   --><span class="variable">A</span><!--
   --><span class="equals">=</span><!--
   --><span class="integer">1</span><!--
@@ -338,7 +339,7 @@ A hasn't been "assigned" to yet.
   --><span class="newline">newline</span><!--
   -->1<!--
   --><span class="newline">newline</span><!--
-  --><span class="prompt">9&gt;</span><!--
+  --><span class="prompt">11&gt;</span><!--
   --><span class="variable">A</span><!--
   --><span class="period">.</span><!--
   --><span class="newline">newline</span><!--
@@ -352,7 +353,7 @@ In order to match A, which is undefined, with 1, it assigned
 </p>
 
 <p class="code"><!--
-  --><span class="prompt">10&gt;</span><!--
+  --><span class="prompt">12&gt;</span><!--
   --><span class="variable">A</span><!--
   --><span class="equals">=</span><!--
   --><span class="integer">2</span><!--
@@ -366,7 +367,7 @@ A has already been assigned 1, so it cannot match 2.
 </p>
 
 <p class="code"><!--
-  --><span class="prompt">11&gt;</span><!--
+  --><span class="prompt">13&gt;</span><!--
   --><span class="variable">A</span><!--
   --><span class="equals">=</span><!--
   --><span class="integer">1</span><!--
@@ -380,7 +381,7 @@ A is 1, so it matches 1. A match returns the match.
 </p>
 
 <p class="code"><!--
-  --><span class="prompt">11&gt;</span><!--
+  --><span class="prompt">14&gt;</span><!--
   --><span class="bracket">[</span><!--
   --><span class="brace">{</span><!--
   --><span class="atom">_</span><!--
@@ -402,12 +403,12 @@ A is 1, so it matches 1. A match returns the match.
 </p>
 
 <p>
-1 is matched to _ (wildcard), 2 is matched to B.
+We can match within lists and tuples: 1 is matched to _ (wildcard) and ignored, 2 is matched to B.
 The entire match is returned.
 </p>
 
 <p class="code"><!--
-  --><span class="prompt">12&gt;</span><!--
+  --><span class="prompt">15&gt;</span><!--
   --><span class="variable">B</span><!--
   --><span class="period">.</span><!--
   --><span class="newline">newline</span><!--
@@ -415,228 +416,183 @@ The entire match is returned.
 </p>
 
 <p>
-A has already been assigned 1, so it cannot match 2.
+B now contains 2.
 </p>
 
 
+<h1>logic.</h1>
 
-<h2>Literals</h2>
 
-<p>
-Integers, floats, strings, lists, tuples and atoms are all literals:
-they evaluate to themselves.
-Atoms are a little unusual and are a code token that are used in pattern matching.
+<p class="code"><!--
+  --><span class="prompt">16&gt;</span><!--
+  --><span class="integer">2</span><!--
+  --><span class="greater-than">&gt;</span><!--
+  --><span class="integer">1</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->true<!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">17&gt;</span><!--
+  --><span class="integer">1</span><!--
+  --><span class="greater-than">&gt;</span><!--
+  --><span class="integer">2</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->false
 </p>
-
-<h2>Pattern Matching</h2>
-
-<p>
-Erlang can deconstruct and match on values.
-</p>
-
-
-<p>
-Erlang has types like integers, floats, strings.
-Erlang also has structural types: lists and tuples.
-Lists and tuples are ordered collections of elements.
-Lists are made up of other lists, starting form an empty list.
-Tuples are more strictly defined as themselves.
-e.g. [1,2,3], a list, is actually, [1 | [2 | [3 | []]]]. That is,
-a list a element 1 concatenated onto a list of element 2 concatenated onto
-a list of element 3 contatonated onto an empty list.
-The tuple {1,2,3} is itself.
-</p>
-
-
 
 <p>
-You can recall the value of the expression at a number with:
+Simple boolean logic
 </p>
 
-<p class="code">
-
-<span class="prompt">3&gt;</span><!--
---><span class="function">v</span><!--
---><span class="paren">(</span><!--
---><span class="integer">2</span><!--
---><span class="paren">)</span><!--
---><span class="period">.</span><!--
---><span class="newline">newline</span><!--
--->"My expression is priceless"
+<p class="code"><!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">18&gt;</span><!--
+  --><span class="double-quote">&quot;</span><!--
+  --><span class="string">string</span><!--
+  --><span class="double-quote">&quot;</span><!--
+  --><span class="greater-than">&gt;</span><!--
+  --><span class="atom">an_atom</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->true<!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">19&gt;</span><!--
+  --><span class="integer">2.0</span><!--
+  --><span class="equals">==</span><!--
+  --><span class="integer">2</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->true
 </p>
 
-<h1>What to <i>Type</i></h1>
 <p>
-Here are some types:
-</p>
-<p class="code">
-<span class="prompt">1&gt;</span><!--
---><span class="integer">1</span><!--
---><span class="comment">1</span><!--
---><span class="period">.</span><!--
---><span class="newline">newline</span>
-1
-</p>
-<p>
-This is an integer. A whole number.
-</p>
-<p class="code">
-2&gt; 1 + 1.
-<br>
-2
-</p>
-<p>
-This is addition.
-</p>
-<p class="code">
-3&gt; 1.0.
-<br>
-1.0
-</p>
-<p>
-This is a decimal number.
-</p>
-<p class="code">
-4&gt; “I believe in myself.”.
-<br>
-"I believe in myself."
-</p>
-<p>
-This is a list of numbers. It is a string. It is both.
-</p>
-<p class="code">
-5&gt; a.
-<br>
-a
-</p>
-<p>
-This is an atom. It is a constant with a value of a. What can you do with that? You might be surprised.
-</p>
-<p class="code">
-6&gt; ‘a’.
-<br>
-a
-</p>
-<p>
-This is an atom. It <em>looks</em> like a string. It is not.
-</p>
-<p class="code">
-7&gt; &lt;&lt;“binary””&gt;&gt;.
-</p>
-<p>
-This is a string, in binary. Actual bytes. Actual bits.
-</p>
-<p class="code">
-8&gt; [this, “is”, a, &lt;&lt;“list”&gt;&gt;, of, 7, “elements”].
-<br>
-[this, “is”, a, &lt;&lt;“list”&gt;&gt;, of, 7, “elements”]
-</p>
-<p>
-Lists can have different types of stuff.
-</p>
-<p class="code">
-9&gt; [].
-<br>
-[]
-</p>
-<p>
-Lists can be empty.
-</p>
-<p class="code">
-10&gt; {“this”, is, ‘a’, &lt;&lt;“tuple”&gt;&gt; with, 7, elements}.
-<br>
-{“this”, is, ‘a’, &lt;&lt;“tuple”&gt;&gt; with, 7, elements}
-</p>
-<p>
-Tuples can have different types of stuff.
-</p>
-<p class="code">
-11&gt; {}.
-<br>
-{}
-</p>
-<p>
-Tuples can be empty.
-</p>
-<p class="code">
-12&gt; {[{[]}]}
-<br>
-{[{[]}]}
-</p>
-<p>
-Tuple of list of tuple of empty list.
-</p>
-<p class="code">
-13&gt; TheThing = 1.
-<br>
-1
-</p>
-<p>
-<span class="code">TheThing</span> is a “variable.” It will never more vary. Eh?
-
-<h1>Making logic.</h1>
-
-<p class="code">
-14&gt; 1 &gt; 0.
-<br>
-true
-</p>
-<p class="code">
-15&gt; “I” &gt; you.
-<br>
-true
+Different types can be compared, with pre-defined precedence.
 </p>
 
-<p class="code">
-16&gt; 1.0 &gt; 1.
-<br>
-false
+<p class="code"><!--
+  --><span class="newline">newline</span><!--
+  --><span class="prompt">20&gt;</span><!--
+  --><span class="integer">2.0</span><!--
+  --><span class="equals">=:=</span><!--
+  --><span class="integer">2</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->false
 </p>
 
-<h1>What if ...</h1>
+<p>
+Different types of literal can be compared for strict matching.
+</p>
 
-<p class="code">
-17&gt; if 1 &gt; 0 -&gt; yes; true -&gt; no.
-<br>
-yes
+
+<h1>If</h1>
+
+<p class="code"><!--
+  --><span class="prompt">21&gt;</span><!--
+  --><span class="if">if</span><!--
+  --><span class="integer">1</span><!--
+  --><span class="less-than">&gt;</span><!--
+  --><span class="integer">0</span><!--
+  --><span class="clause-arrow">-></span><!--
+  --><span class="atom">yes</span><!--
+  --><span class="semicolon">;</span><!--
+  --><span class="atom">true</span><!--
+  --><span class="clause-arrow">-&gt;</span><!--
+  --><span class="atom">no</span><!--
+  --><span class="period">.</span><!--
+  --><span class="newline">newline</span><!--
+  -->yes
 </p>
 
 <p>
 Wait, what?
 </p>
 <p>
-The arrow, <span class="code">-&gt;</span> basically means “then”, the semi-colon means “else if”.
+The arrow, <span class="code">-&gt;</span> basically means “then”,
+the semi-colon means “else if”.
 </p>
 <p>
-This reads as “If one is greater than zero, then evaluate <span class="code">yes</span>; otherwise if true then evaluate <span class="code">no</span>."
+This reads as “If one is greater than zero, then evaluate
+<span class="code"><span class="atom">yes</span></span>; otherwise if true then evaluate
+<span class="code"><span class="atom">no</span></span>."
 </p>
 <p>
 Everything you <em>do</em> (evaluate) in Erlang has a value. The last thing you evaluate in a sequence of things is the value of that sequence of things.
 </p>
 
-<p class="code">
-18&gt; 1, 2, 3, 4, 5.
-<br>
-5
+<p class="code"><!--
+--><span class="prompt">22&gt;</span><!--
+--><span class="integer">1</span><!--
+--><span class="comma">,</span><!--
+--><span class="integer">2</span><!--
+--><span class="comma">,</span><!--
+--><span class="integer">3</span><!--
+--><span class="comma">,</span><!--
+--><span class="integer">4</span><!--
+--><span class="comma">,</span><!--
+--><span class="integer">5</span><!--
+--><span class="period">.</span><!--
+--><span class="newline">newline</span><!--
+-->5
 </p>
 
-<p class="code">
-19&gt; if 1 &gt; 0 -&gt; 1, 2, 3, 4, 5; 1 = 1 -&gt; no.
-<br>
-5
+<p class="code"><!--
+--><span class="prompt">23&gt;</span><!--
+--><span class="if">if</span><!--
+--><span class="integer">1</span><!--
+--><span class="greater-than">&gt;</span><!--
+--><span class="integer">0</span><!--
+--><span class="clause-arrow">-&gt;</span><!--
+--><span class="integer">1</span><!--
+--><span class="comma">,</span><!--
+--><span class="integer">2</span><!--
+--><span class="comma">,</span><!--
+--><span class="integer">3</span><!--
+--><span class="comma">,</span><!--
+--><span class="integer">4</span><!--
+--><span class="comma">,</span><!--
+--><span class="integer">5</span><!--
+--><span class="semicolon">;</span><!--
+--><span class="integer">1</span><!--
+--><span class="equals">=</span><!--
+--><span class="integer">1</span><!--
+--><span class="clause-arrow">-&gt;</span><!--
+--><span class="atom">no</span><!--
+--><span class="period">.</span><!--
+--><span class="newline">newline</span><!--
+-->5
 </p>
 
-What happens to <span class="code">1</span>, <span class="code">2</span>, <span class="code">3</span> and <span class="code">4</span>?
+What happens to
+<span class="code"><span class="integer">1</span></span>,
+<span class="code"><span class="integer">2</span></span>,
+<span class="code"><span class="integer">3</span></span> and,
+<span class="code"><span class="integer">4</span></span>?,
+<p>
 Nothing. You “did” them, which for numbers means doing nothing.
-
-<p>
-What about the <span class="code">true -&gt; no.</span> part?
-</p>
-<p>
-The <span class="code">if</span> statement always has to have a branch that works. The <span class="code">if</span> will always return the result of whatever clause worked.
 </p>
 
-<h1>In the case of ...</h1>
+<p>
+What about the
+<p class="code"><!--
+--><span class="integer">1</span><!--
+--><span class="equals">=</span><!--
+--><span class="integer">1</span><!--
+--><span class="clause-arrow">-&gt;</span><!--
+--><span class="atom">no</span><!--
+--><span class="period">.</span>
+</p>
+<p>
+  part?
+</p>
+<p>
+The <span class="code"><span class="if">if</span></span>
+statement always has to have a branch that works.
+The <span class="code"><span class="if">if</span></span> will always return the result of whatever clause worked.
+</p>
+
+<h1>Case (aka switch, select)</h1>
 
 <p class="code">
 20&gt; case 1 of 2 -&gt; yes; _ -&gt; no end.

@@ -1,15 +1,17 @@
-.code {background: black;
+BODY {background: #D0D0D0;}
+
+.code {background: #303030;
        /*color: #D0D0D0;*/
-       padding:5px;
+       padding:10px;
        color:#D0D0D0;
        font-family:monospace;}
 
 .newline {display:block;
-          color:black;
+          color:#303030;
           height:0px;}
 
 .blankline {display:block;
-            color:black;}
+            color: #303030;}
 
 .prompt {font-weight: bold;
          margin-right:5px;
@@ -58,6 +60,10 @@
 
 .period {}
 
+.semicolon {margin-right:5px;}
+
+.if {margin-right: 5px;}
+
 .comma {margin-right:5px;}
 
 .string {color:red;}
@@ -69,9 +75,22 @@
          margin-left:5px;
          margin-right:5px;}
 
+.less-than {color:yellow;
+            margin-left:5px;
+            margin-right:5px;}
+
+.greater-than {color:yellow;
+               margin-left:5px;
+               margin-right:5px;}
+
+.greater-than {color:yellow;
+               margin-left:5px;
+               margin-right:5px;}
+
 .double-quote {color:red;}
 
-.clause-arrow {margin-left:5px;}
+.clause-arrow {margin-left:5px;
+               margin-right:5px;}
 
 .eof {color:grey;}
 
